@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="second.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi-Page Survey Form</title>
+    <style>
+      .page {
+        /* display: none; */
+      }
+    </style>
+  </head>
+  <body>
+    <form id="surveyForm" method="post" action="submit.php">
+      <div class="page" id="page1">
+        <h1>Page 1</h1>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" />
+        <button type="button" onclick="showPage('page2')">Next</button>
+      </div>
+
+      <div class="page" id="page2">
+        <h1>Page 2</h1>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" />
+        <button type="button" onclick="showPage('page1')">Previous</button>
+        <button type="button" onclick="showPage('page3')">Next</button>
+      </div>
+
+      <div class="page" id="page3">
+        <h1>Page 3</h1>
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback"></textarea>
+        <button type="button" onclick="showPage('page2')">Previous</button>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
+    <script>
+      const pages = document.querySelectorAll(".page");
+
+      function showPage(pageId) {
+        pages.forEach((page) => {
+          if (page.id === pageId) {
+            page.style.display = "block";
+          } else {
+            page.style.display = "none";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
